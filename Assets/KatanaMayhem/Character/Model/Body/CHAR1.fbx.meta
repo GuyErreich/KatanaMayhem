@@ -8,52 +8,52 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Body
-    second: {fileID: 2100000, guid: 49606f6e64a87f9429b9e3c678f5fa7c, type: 2}
+    second: {fileID: 2100000, guid: 93134f214f0ab0448bc3a5de52c2fb4f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Boots
-    second: {fileID: 2100000, guid: 083787334bb11e544969ab5ef764e321, type: 2}
+    second: {fileID: 2100000, guid: 18599f60c03b61a4db94093f76794181, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Braclet
-    second: {fileID: 2100000, guid: 1550b5570fa7d384ea0e2d1592800c8e, type: 2}
+    second: {fileID: 2100000, guid: 3c4fa6a654fee2a46857fda8e6200ead, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyebrows
+    second: {fileID: 2100000, guid: eb84586ddef52d44b8cbfbf752e84c87, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Eyes
-    second: {fileID: 2100000, guid: 50c1e97ef94fcf847b83e4422dafe968, type: 2}
+    second: {fileID: 2100000, guid: 01f4a362b6002a24d8d4e28725444b3a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Gauntlat
-    second: {fileID: 2100000, guid: 126a083a5db260546aceed499ef8b6cc, type: 2}
+    second: {fileID: 2100000, guid: 05ba5b83ad923d54d9b532c86b3e476d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Gloves
-    second: {fileID: 2100000, guid: e6ce2fdb5832b4945b701bc7ba9f54c1, type: 2}
+    second: {fileID: 2100000, guid: 15be513ce2736bf4c8ec59ac02d50d69, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Hair
-    second: {fileID: 2100000, guid: 4c42a5461fc7fe446bfabb0c7e3c31ab, type: 2}
+    second: {fileID: 2100000, guid: 68cd7ce820dbbbf439b8849e68f4df69, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mask
-    second: {fileID: 2100000, guid: a1ffa64bf930965409bcd2ad41e6d265, type: 2}
+    second: {fileID: 2100000, guid: 197a2ef5be444a84bbda3abf78c28021, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Pants
-    second: {fileID: 2100000, guid: c47f46339d741e1489839891b1f6dec1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Shirt
-    second: {fileID: 2100000, guid: 65bf83bffc8c89a4383e3e3a7eb00760, type: 2}
+    second: {fileID: 2100000, guid: 08481c3d1a5956940976cdbbd22ed5bc, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
