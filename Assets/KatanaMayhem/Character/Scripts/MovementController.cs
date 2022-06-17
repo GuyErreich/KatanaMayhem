@@ -8,14 +8,11 @@ namespace KatanaMayhem.Character.Scripts
     [RequireComponent(typeof(CapsuleCollider))]
     public class MovementController : MonoBehaviour
     {
-
-        [Header("Reference")]
-        [SerializeField] private Transform lookAt;
-
         [Header("Stats")]
         [SerializeField]private float speed = 7.0f;
         [SerializeField]private float gravity = 9.8f;
         // [SerializeField]private float max_slopes = 65f;
+        
 
         private Rigidbody rb;
         private Vector3 direction;
@@ -32,7 +29,6 @@ namespace KatanaMayhem.Character.Scripts
 
         private void Update()
         {
-
             this.direction = (this.transform.right * this.movement.x) + (this.transform.forward * this.movement.y);
 
             this.CheckForGround();
@@ -50,11 +46,10 @@ namespace KatanaMayhem.Character.Scripts
         private void CheckForGround()
         {
             int layerMask = ~LayerMask.NameToLayer("Terrain");
-            isGrounded = Physics.Raycast(this.transform.position, Vector3.down, out this.ground, 0.5f, layerMask);
+            isGrounded = Physics.Raycast(this.transform.position + (Vector3.up * 0.3f), Vector3.down, out this.ground, 0.5f, layerMask);
             
-                
 #if UNITY_EDITOR
-            Debug.DrawRay (this.transform.position, Vector3.down * 0.5f, Color.red);
+            Debug.DrawRay (this.transform.position + (Vector3.up * 0.3f), Vector3.down * 0.4f, Color.red);
 #endif
         }
 
@@ -62,17 +57,13 @@ namespace KatanaMayhem.Character.Scripts
         {
             Quaternion slopAngle = Quaternion.FromToRotation(Vector3.up, this.ground.normal);
             Vector3 directionOnSurface = slopAngle * this.direction;
-
             
+            this.direction = directionOnSurface;
+
 #if UNITY_EDITOR
             Debug.DrawRay (this.transform.position, slopAngle * this.transform.forward, Color.red, 0.5f);
             Debug.Log(this.ground.normal.x);
 #endif
-
-            // if(this.ground.normal.x >= max_slopes)
-            // {
-            this.direction = directionOnSurface;
-            // }
         }
 
         private void HandleFalling()

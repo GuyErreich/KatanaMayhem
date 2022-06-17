@@ -5,79 +5,79 @@ using UnityEngine;
 namespace KatanaMayhem.Character.Scripts
 {
     public class IKFootPlacement : MonoBehaviour
-    {    
-        [SerializeField, Range(0, 1)]
+    {
+        [SerializeField, Range(0f, 1f)]
         private float distanceToGround;
 
-        [SerializeField]
-        private Transform player;
+        [SerializeField, Range(0f, 1f)]
+        private float footWeightPos, footWeightRot, footHintWeight;
+
+        [SerializeField, Range(0f, 5f)]
+        private float hightShift = 1f;
+
+        [SerializeField, Range(0f, 90f)]
+        private float AngleShift = 25f;
 
         private Animator anim;
+        private RaycastHit hit;
 
         // Start is called before the first frame update
         void Awake()
         {
-            anim = GetComponent<Animator>();
+            this.anim = GetComponent<Animator>();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnAnimatorIK(int layerIndex)
         {
-            
+            Ray ray = new Ray(this.anim.GetIKPosition(AvatarIKGoal.LeftFoot) + (Vector3.up * hightShift), Vector3.down);
+
+            if(Physics.Raycast(ray, out this.hit, this.distanceToGround + 1, ~LayerMask.NameToLayer("Terrain")))
+            {
+                this.FootPlacment(AvatarIKGoal.LeftFoot);
+                this.FootRotation(AvatarIKGoal.LeftFoot);
+                this.HintPosition(AvatarIKHint.LeftKnee);
+            }
+
+            ray = new Ray(this.anim.GetIKPosition(AvatarIKGoal.RightFoot) + (Vector3.up * hightShift), Vector3.down);
+
+            if(Physics.Raycast(ray, out this.hit, this.distanceToGround + 1, ~LayerMask.NameToLayer("Terrain")))
+            {
+                this.FootPlacment(AvatarIKGoal.RightFoot);
+                this.FootRotation(AvatarIKGoal.RightFoot);
+                this.HintPosition(AvatarIKHint.RightKnee);
+            }
         }
 
-        private void OnAnimatorIK(int layerIndex) {
-            anim.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 1f);
-            anim.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 1f);
-            anim.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1f);
-            anim.SetIKRotationWeight(AvatarIKGoal.RightFoot, 1f);
+        private void FootPlacment(AvatarIKGoal side)
+        {
+            this.anim.SetIKPositionWeight(side, this.footWeightPos);
 
-            RaycastHit hit;
-            Ray ray = new Ray(anim.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down);
+            Vector3 footPosition = this.hit.point;
+            footPosition.y += this.distanceToGround;
+      
+            this.anim.SetIKPosition(side, footPosition);
 
-            if(Physics.Raycast(ray, out hit, distanceToGround + 1, ~LayerMask.NameToLayer("Ignore Raycast")))
-            {
-                print(LayerMask.LayerToName(hit.transform.gameObject.layer));
-                print(LayerMask.LayerToName(hit.transform.gameObject.layer));
-                if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
-                {
-                    Vector3 footPosition = hit.point;
-                    footPosition.y += distanceToGround;
-                    
-                    var rotationX = Quaternion.FromToRotation(transform.up, hit.normal);
-                    // var rotationZ = Quaternion.FromToRotation(transform.forward, hit.normal);
+            Debug.DrawRay(this.anim.GetIKPosition(side) + (Vector3.up * hightShift), Vector3.down * (this.distanceToGround + 1f), Color.yellow);
+        }
 
-                    Vector3 footForward = rotationX * transform.forward;
+        void FootRotation(AvatarIKGoal side)
+        {
+            this.anim.SetIKRotationWeight(side, this.footWeightRot);
 
-                    anim.SetIKPosition(AvatarIKGoal.LeftFoot, footPosition);
-                    anim.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(player.forward, hit.normal));
-                    // anim.SetIKPosition()
-                    Debug.DrawRay(anim.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down * (distanceToGround + 1f), Color.yellow);
-                }
-            }
+            Transform foot = side == AvatarIKGoal.LeftFoot ? this.anim.GetBoneTransform(HumanBodyBones.LeftFoot) : this.anim.GetBoneTransform(HumanBodyBones.RightFoot);
 
-            ray = new Ray(anim.GetIKPosition(AvatarIKGoal.RightFoot) + Vector3.up, Vector3.down);
+            this.anim.SetIKRotation(side, Quaternion.FromToRotation(Vector3.up, this.hit.normal));
 
-            if(Physics.Raycast(ray, out hit, distanceToGround + 1, ~LayerMask.NameToLayer("Ignore Raycast")))
-            {
-                print(LayerMask.LayerToName(hit.transform.gameObject.layer));
-                print(LayerMask.LayerToName(hit.transform.gameObject.layer));
-                if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
-                {
-                    Vector3 footPosition = hit.point;
-                    footPosition.y += distanceToGround;
-                    
-                    var rotationX = Quaternion.FromToRotation(transform.up, hit.normal);
-                    // var rotationZ = Quaternion.FromToRotation(transform.forward, hit.normal);
+            Debug.DrawRay(foot.position, this.hit.normal);
+            Debug.DrawRay(foot.position, foot.up);
+        }
 
-                    Vector3 footForward = rotationX * transform.forward;
+        void HintPosition(AvatarIKHint side)
+        {
+            this.anim.SetIKHintPositionWeight(side, this.footHintWeight);
 
-                    anim.SetIKPosition(AvatarIKGoal.RightFoot, footPosition);
-                    anim.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.LookRotation(player.forward, hit.normal));
-                    // anim.SetIKPosition()
-                    Debug.DrawRay(anim.GetIKPosition(AvatarIKGoal.RightFoot) + Vector3.up, Vector3.down * (distanceToGround + 1f), Color.yellow);
-                }
-            }
+            Transform foot = side == AvatarIKHint.LeftKnee ? transform.Find("LeftFoot") : transform.Find("RightFoot");
+            Vector3 hintPos = foot.position + foot.forward;
         }
     }
 }
