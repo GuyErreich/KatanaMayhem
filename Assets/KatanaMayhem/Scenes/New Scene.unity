@@ -299,7 +299,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.664155, y: 1}
+    m_SensorSize: {x: 0.83950615, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -492,7 +492,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.664155, y: 1}
+    m_SensorSize: {x: 0.83950615, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -681,7 +681,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40
+  field of view: 70
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -707,7 +707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 725451053}
   m_LocalRotation: {x: 0.1675434, y: 0, z: 0, w: 0.9858647}
-  m_LocalPosition: {x: 35.2, y: 15.92464, z: 19.019234}
+  m_LocalPosition: {x: 35.2, y: 20.172, z: 9.911}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -853,7 +853,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.664155, y: 1}
+    m_SensorSize: {x: 0.83950615, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -931,7 +931,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.664155, y: 1}
+    m_SensorSize: {x: 0.83950615, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1431,7 +1431,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.664155, y: 1}
+    m_SensorSize: {x: 0.83950615, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1509,7 +1509,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.664155, y: 1}
+    m_SensorSize: {x: 0.83950615, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2158,7 +2158,7 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 96fcc92aaad4e9e4f90c863243cf3914, type: 3}
   m_PrefabInstance: {fileID: 1450380671}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1730482608
+--- !u!114 &1730482605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2167,15 +2167,78 @@ MonoBehaviour:
   m_GameObject: {fileID: 1088932829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be063d0c1cf22ad409c55a4cc06ce1cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 2880a43a6dc5a5b468991f96f9a9d3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToGround: 0.102
-  footWeightPos: 1
-  footWeightRot: 1
-  footHintWeight: 1
-  hightShift: 1
-  AngleShift: 25
+  mFootID: 1
+  mForwardVector: {x: 0.3025385, y: 0, z: 0.95313716}
+  mIKHintOffset: {x: 0, y: 0, z: 0}
+  mUpVector: {x: 0, y: 1, z: 0}
+  mFootOffsetDist: 0.7
+  mFootLength: 0.24
+  mFootHalfWidth: 0.06
+  mFootHeight: 0.11
+  mTransitionTime: 0.2
+  mExtraRayDistanceCheck: 0.05
+  mFootRotationLimit: 45
+  mPlantFoot: 1
+  mDisablePlantFromDistance: 0.3
+  mDisablePlantFromAngle: 60
+  mSetExtraRayDistanceCheckAutomatically: 1
+  mFootDistanceFromGroundThreshold: 0.1
+  mExtraRayDistanceCheckMin: 0
+  mExtraRayDistanceCheckMax: 0.05
+  mDrawDebugRay: 1
+--- !u!114 &1730482606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088932829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2880a43a6dc5a5b468991f96f9a9d3ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mFootID: 0
+  mForwardVector: {x: -0.3956265, y: -0, z: 0.9184115}
+  mIKHintOffset: {x: 0, y: 0, z: 0}
+  mUpVector: {x: 0, y: 1, z: 0}
+  mFootOffsetDist: 0.65
+  mFootLength: 0.24
+  mFootHalfWidth: 0.04
+  mFootHeight: 0.19
+  mTransitionTime: 0.2
+  mExtraRayDistanceCheck: 2
+  mFootRotationLimit: 45
+  mPlantFoot: 1
+  mDisablePlantFromDistance: 0.3
+  mDisablePlantFromAngle: 60
+  mSetExtraRayDistanceCheckAutomatically: 1
+  mFootDistanceFromGroundThreshold: 0.1
+  mExtraRayDistanceCheckMin: 0
+  mExtraRayDistanceCheckMax: 2
+  mDrawDebugRay: 1
+--- !u!114 &1730482607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088932829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e796d52b745d0c4ebe4c471b5cf65bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mAdjustPelvisVertically: 0
+  mDampPelvis: 0
+  mMaxLegLength: 1
+  mMinLegLength: 0.2
+  mPelvisAdjustmentSpeed: 1
+  mLayersToIgnore:
+  - Ignore Raycast
 --- !u!1 &2023631320
 GameObject:
   m_ObjectHideFlags: 0
@@ -2321,7 +2384,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.664155, y: 1}
+    m_SensorSize: {x: 0.83950615, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
