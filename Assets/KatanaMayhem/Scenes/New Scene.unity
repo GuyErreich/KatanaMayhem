@@ -299,7 +299,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.83950615, y: 1}
+    m_SensorSize: {x: 1.2364802, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -492,7 +492,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.83950615, y: 1}
+    m_SensorSize: {x: 1.2364802, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -853,7 +853,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.83950615, y: 1}
+    m_SensorSize: {x: 1.2364802, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -931,7 +931,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.83950615, y: 1}
+    m_SensorSize: {x: 1.2364802, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1431,7 +1431,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.83950615, y: 1}
+    m_SensorSize: {x: 1.2364802, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1509,7 +1509,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.83950615, y: 1}
+    m_SensorSize: {x: 1.2364802, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2171,23 +2171,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mFootID: 1
-  mForwardVector: {x: 0.3025385, y: 0, z: 0.95313716}
+  mForwardVector: {x: 0, y: 0, z: 1}
   mIKHintOffset: {x: 0, y: 0, z: 0}
   mUpVector: {x: 0, y: 1, z: 0}
-  mFootOffsetDist: 0.7
-  mFootLength: 0.24
+  mFootOffsetDist: 0.45
+  mFootLength: 0.22
   mFootHalfWidth: 0.06
   mFootHeight: 0.11
-  mTransitionTime: 0.2
-  mExtraRayDistanceCheck: 0.05
+  mTransitionTime: 0.22
+  mExtraRayDistanceCheck: 0.5
   mFootRotationLimit: 45
-  mPlantFoot: 1
-  mDisablePlantFromDistance: 0.3
+  mPlantFoot: 0
+  mDisablePlantFromDistance: 0
   mDisablePlantFromAngle: 60
-  mSetExtraRayDistanceCheckAutomatically: 1
+  mSetExtraRayDistanceCheckAutomatically: 0
   mFootDistanceFromGroundThreshold: 0.1
   mExtraRayDistanceCheckMin: 0
-  mExtraRayDistanceCheckMax: 0.05
+  mExtraRayDistanceCheckMax: 0
   mDrawDebugRay: 1
 --- !u!114 &1730482606
 MonoBehaviour:
@@ -2202,23 +2202,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mFootID: 0
-  mForwardVector: {x: -0.3956265, y: -0, z: 0.9184115}
+  mForwardVector: {x: 0, y: 0, z: 1}
   mIKHintOffset: {x: 0, y: 0, z: 0}
   mUpVector: {x: 0, y: 1, z: 0}
-  mFootOffsetDist: 0.65
-  mFootLength: 0.24
-  mFootHalfWidth: 0.04
-  mFootHeight: 0.19
-  mTransitionTime: 0.2
-  mExtraRayDistanceCheck: 2
+  mFootOffsetDist: 0.45
+  mFootLength: 0.22
+  mFootHalfWidth: 0.06
+  mFootHeight: 0.11
+  mTransitionTime: 0.22
+  mExtraRayDistanceCheck: 0.7
   mFootRotationLimit: 45
-  mPlantFoot: 1
-  mDisablePlantFromDistance: 0.3
+  mPlantFoot: 0
+  mDisablePlantFromDistance: 0
   mDisablePlantFromAngle: 60
-  mSetExtraRayDistanceCheckAutomatically: 1
+  mSetExtraRayDistanceCheckAutomatically: 0
   mFootDistanceFromGroundThreshold: 0.1
-  mExtraRayDistanceCheckMin: 0
-  mExtraRayDistanceCheckMax: 2
+  mExtraRayDistanceCheckMin: 0.5
+  mExtraRayDistanceCheckMax: 1
   mDrawDebugRay: 1
 --- !u!114 &1730482607
 MonoBehaviour:
@@ -2232,11 +2232,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e796d52b745d0c4ebe4c471b5cf65bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mAdjustPelvisVertically: 0
-  mDampPelvis: 0
-  mMaxLegLength: 1
-  mMinLegLength: 0.2
-  mPelvisAdjustmentSpeed: 1
+  mAdjustPelvisVertically: 1
+  mDampPelvis: 1
+  mMaxLegLength: 0.85
+  mMinLegLength: 0.4
+  mPelvisAdjustmentSpeed: 0.6
   mLayersToIgnore:
   - Ignore Raycast
 --- !u!1 &2023631320
@@ -2384,7 +2384,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.83950615, y: 1}
+    m_SensorSize: {x: 1.2364802, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

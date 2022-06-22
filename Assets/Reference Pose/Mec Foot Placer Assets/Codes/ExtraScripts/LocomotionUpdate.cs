@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class LocomotionUpdate : StateMachineBehaviour {
+    [SerializeField] private float maxDistance = 0.7f;
 
 	public override void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex) 
 	{
@@ -12,9 +13,8 @@ public class LocomotionUpdate : StateMachineBehaviour {
 	public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex) 
 	{
 
-		float lCurrentSpeedFactor = animator.GetFloat("speed");
-		float lTime = animatorStateInfo.normalizedTime - Mathf.Floor(animatorStateInfo.normalizedTime);
-		float lBlendedTime = 0.5f - 0.25f * lCurrentSpeedFactor;
+		float IKLeftFoot = animator.GetFloat("IKLeftFoot");
+		float IKRightFoot = animator.GetFloat("IKRightFoot");
 
 		FootPlacementData[] lFeet = animator.GetComponents<FootPlacementData>();
 		FootPlacementData lFoot = null;
@@ -26,42 +26,14 @@ public class LocomotionUpdate : StateMachineBehaviour {
             {
                 case FootPlacementData.LimbID.LEFT_FOOT:
                     lFoot = lFeet[i];
-
-                    if (lTime > 0.5 && lTime < 0.5f + lBlendedTime)
-                    {
-                        lFoot.mExtraRayDistanceCheck = 0.7f;
-                    }
-                    else
-                    {
-                        lFoot.mExtraRayDistanceCheck = -0.2f;
-                    }                    
+                    lFoot.mExtraRayDistanceCheck = this.maxDistance * IKLeftFoot;         
                     break;
 
                 case FootPlacementData.LimbID.RIGHT_FOOT:
                     lFoot = lFeet[i];
-
-                    //Setting up raycast extra ray dist
-                    if (lTime < lBlendedTime)
-                    {
-                        lFoot.mExtraRayDistanceCheck = 0.7f;
-                    }
-                    else
-                    {
-                        lFoot.mExtraRayDistanceCheck = -0.2f;
-                    }
+                    lFoot.mExtraRayDistanceCheck = this.maxDistance * IKRightFoot;         
                     break;
-
-                case FootPlacementData.LimbID.LEFT_HAND:
-                    lFoot = lFeet[i];
-                    break;
-
-                case FootPlacementData.LimbID.RIGHT_HAND:
-                    lFoot = lFeet[i];
-                    break;
-            }
-
-            //Setting up transition time
-            lFoot.mTransitionTime = 0.15f - (0.1f * lCurrentSpeedFactor);            
+            }        
         }	
 	}
 }
