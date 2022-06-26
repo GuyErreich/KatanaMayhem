@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 6149424769883086644}
   - component: {fileID: 6149424769883086643}
   - component: {fileID: 6149424769883086642}
+  - component: {fileID: -2444125574892492928}
   - component: {fileID: 6149424769883086641}
-  m_Layer: 0
+  - component: {fileID: -2964203989639945792}
+  m_Layer: 6
   m_Name: SlimeBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,6 +86,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &-2444125574892492928
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6149424769883086640}
+  serializedVersion: 2
+  m_Mass: 30
+  m_Drag: 1
+  m_AngularDrag: 100
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 2
 --- !u!135 &6149424769883086641
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -91,9 +109,21 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6149424769883086640}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b2e18ac3b08c36b4986df9b20a63c0b8, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-2964203989639945792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6149424769883086640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98769c6fc330cb743866a60f9cb894ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -62,7 +62,7 @@ Material:
     - _Emssion_Color: {r: 1.005235, g: 0, b: 7.999999, a: 0}
     - _Frensel_Color: {r: 0.5026177, g: 0, b: 4, a: 0}
     - _Noise_Value: {r: 2, g: 2, b: 0, a: 0}
-    - _Vector3: {r: 0.5, g: 0.3, b: 0.7, a: 0}
+    - _Vector3: {r: 0.3, g: 0.3, b: 0.3, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7403754164471941511
 MonoBehaviour:

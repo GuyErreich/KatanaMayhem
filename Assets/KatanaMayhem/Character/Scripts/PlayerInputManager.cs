@@ -13,6 +13,7 @@ namespace KatanaMayhem.Character.Scripts
 
         private MovementController movementController;
         private PlayerAnimationController animationController;
+        private JellyShoot jellyShoot;
 
         private Vector2 movement;
 
@@ -25,11 +26,13 @@ namespace KatanaMayhem.Character.Scripts
 
             this.movementController = this.GetComponent<MovementController>();
             this.animationController = this.GetComponent<PlayerAnimationController>();
+            this.jellyShoot = this.GetComponent<JellyShoot>();
 
             this.controls = new PlayerControls();
             characterInput = this.controls.Character;
 
             this.characterInput.Movement.performed += ctx => this.movement = ctx.ReadValue<Vector2>();
+            this.characterInput.Shoot.performed += ctx => jellyShoot.Shoot();
         }
 
         private void Update() 

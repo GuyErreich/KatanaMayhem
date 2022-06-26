@@ -46,6 +46,15 @@ namespace KatanaMayhem.Character.Scripts
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""dcf54d94-6ddf-473f-bd2e-a63c554ddd45"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -114,6 +123,17 @@ namespace KatanaMayhem.Character.Scripts
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""241828fb-6d1b-4500-8a00-a394ec1164cf"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -124,6 +144,7 @@ namespace KatanaMayhem.Character.Scripts
             m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
             m_Character_Movement = m_Character.FindAction("Movement", throwIfNotFound: true);
             m_Character_Jump = m_Character.FindAction("Jump", throwIfNotFound: true);
+            m_Character_Shoot = m_Character.FindAction("Shoot", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -185,12 +206,14 @@ namespace KatanaMayhem.Character.Scripts
         private ICharacterActions m_CharacterActionsCallbackInterface;
         private readonly InputAction m_Character_Movement;
         private readonly InputAction m_Character_Jump;
+        private readonly InputAction m_Character_Shoot;
         public struct CharacterActions
         {
             private @PlayerControls m_Wrapper;
             public CharacterActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_Character_Movement;
             public InputAction @Jump => m_Wrapper.m_Character_Jump;
+            public InputAction @Shoot => m_Wrapper.m_Character_Shoot;
             public InputActionMap Get() { return m_Wrapper.m_Character; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -206,6 +229,9 @@ namespace KatanaMayhem.Character.Scripts
                     @Jump.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
                     @Jump.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
                     @Jump.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnJump;
+                    @Shoot.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnShoot;
+                    @Shoot.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnShoot;
+                    @Shoot.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnShoot;
                 }
                 m_Wrapper.m_CharacterActionsCallbackInterface = instance;
                 if (instance != null)
@@ -216,6 +242,9 @@ namespace KatanaMayhem.Character.Scripts
                     @Jump.started += instance.OnJump;
                     @Jump.performed += instance.OnJump;
                     @Jump.canceled += instance.OnJump;
+                    @Shoot.started += instance.OnShoot;
+                    @Shoot.performed += instance.OnShoot;
+                    @Shoot.canceled += instance.OnShoot;
                 }
             }
         }
@@ -224,6 +253,7 @@ namespace KatanaMayhem.Character.Scripts
         {
             void OnMovement(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+            void OnShoot(InputAction.CallbackContext context);
         }
     }
 }
