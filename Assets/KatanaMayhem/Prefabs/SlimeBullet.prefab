@@ -127,3 +127,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98769c6fc330cb743866a60f9cb894ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  staticSlime: {fileID: 78427176851202814, guid: 9ecad86f5d775df4395d7a91fb76301c, type: 3}
