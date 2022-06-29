@@ -16,6 +16,7 @@ namespace KatanaMayhem.Character.Scripts
         private JellyShoot jellyShoot;
 
         private Vector2 movement;
+        private bool isJumping;
 
         private void Awake()
         {
@@ -32,12 +33,13 @@ namespace KatanaMayhem.Character.Scripts
             characterInput = this.controls.Character;
 
             this.characterInput.Movement.performed += ctx => this.movement = ctx.ReadValue<Vector2>();
-            this.characterInput.Shoot.performed += ctx => jellyShoot.Shoot();
+            this.characterInput.Shoot.performed += ctx => this.jellyShoot.Shoot();
+            this.characterInput.Jump.performed += ctx => this.isJumping = ctx.ReadValueAsButton();
         }
 
         private void Update() 
         {
-            this.movementController.ReceiveInput(this.movement);
+            this.movementController.ReceiveInput(this.movement, this.isJumping);
             this.animationController.ReceiveInput(this.movement);
         }
 
