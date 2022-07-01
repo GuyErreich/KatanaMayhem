@@ -34,7 +34,8 @@ namespace KatanaMayhem.Character.Scripts
 
             this.characterInput.Movement.performed += ctx => this.movement = ctx.ReadValue<Vector2>();
             this.characterInput.Shoot.performed += ctx => this.jellyShoot.Shoot();
-            this.characterInput.Jump.performed += ctx => this.isJumping = ctx.ReadValueAsButton();
+            this.characterInput.Jump.started += ctx => this.isJumping = ctx.ReadValueAsButton();
+            this.characterInput.Jump.canceled += ctx => this.isJumping = ctx.ReadValueAsButton();
         }
 
         private void Update() 

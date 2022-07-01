@@ -117,7 +117,7 @@ namespace KatanaMayhem.Character.Scripts
                     ""name"": """",
                     ""id"": ""f4daad48-8094-4c15-8f51-a23c1c8ed555"",
                     ""path"": ""<Keyboard>/space"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
