@@ -46,23 +46,23 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Disturbance_Strength: 0.5
-    - _EmissionBlend: 1
+    - _Disturbance_Strength: 0.1
+    - _EmissionBlend: 0.869
     - _Emission_Noise: 200
-    - _Frensel_Power: 2.43
-    - _Noise_Scale: 1.5
+    - _Frensel_Power: 3.3
+    - _Noise_Scale: 4
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WobbleDistance: 0.2
-    - _WobbleFrequency: 50
-    - _WobbleSpeed: 3
+    - _WobbleDistance: 0.5
+    - _WobbleFrequency: 20
+    - _WobbleSpeed: 5
     m_Colors:
-    - _Albedo_Color: {r: 0.25486138, g: 0, b: 1, a: 0}
-    - _Albedo_Scroll: {r: 0, g: 0, b: 0, a: 0}
-    - _Emssion_Color: {r: 1.005235, g: 0, b: 7.999999, a: 0}
-    - _Frensel_Color: {r: 0.5026177, g: 0, b: 4, a: 0}
-    - _Noise_Value: {r: 4, g: 4, b: 0, a: 0}
-    - _Vector3: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    - _Albedo_Color: {r: 0, g: 1, b: 0.12923098, a: 0}
+    - _Albedo_Scroll: {r: 0.05, g: -0.05, b: 0, a: 0}
+    - _Emssion_Color: {r: 0, g: 0.9999999, b: 0.13612564, a: 0}
+    - _Frensel_Color: {r: 0, g: 2.6701567, b: 0.45026174, a: 0}
+    - _Noise_Value: {r: 4, g: 2, b: 0, a: 0}
+    - _Vector3: {r: 0.3, g: 0.3, b: 0.3, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7403754164471941511
 MonoBehaviour:
