@@ -46,18 +46,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Distance: -0.65
     - _Disturbance_Strength: 0.1
-    - _EmissionBlend: 0.869
+    - _EmissionBlend: 0.5
     - _Emission_Noise: 200
-    - _Frensel_Power: 3.3
-    - _Noise_Scale: 4
+    - _Frensel_Power: -0.76
+    - _Noise_Scale: 3.3
     - _QueueControl: 0
     - _QueueOffset: 0
     - _WobbleDistance: 0.1
     - _WobbleFrequency: 3
     - _WobbleSpeed: 5
     m_Colors:
-    - _Albedo_Color: {r: 0.25486138, g: 0, b: 1, a: 0}
+    - _Albedo_Color: {r: 0.25486135, g: 0, b: 1, a: 0}
     - _Albedo_Scroll: {r: 0.05, g: -0.05, b: 0, a: 0}
     - _Emssion_Color: {r: 1.005235, g: 0, b: 7.999999, a: 0}
     - _Frensel_Color: {r: 0.5026177, g: 0, b: 4, a: 0}

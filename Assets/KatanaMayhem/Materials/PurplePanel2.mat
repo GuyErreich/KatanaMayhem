@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SlimeHardend
+  m_Name: PurplePanel2
   m_Shader: {fileID: -6465566751694194690, guid: 0cf49072f5e75204d93b5728ca064e52, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -46,24 +46,24 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Distance: 0.65
+    - _Distance: 0
     - _Disturbance_Strength: 0.1
     - _EmissionBlend: 0.5
     - _Emission_Noise: 200
-    - _Frensel_Power: -0.79
-    - _Noise_Scale: 4
+    - _Frensel_Power: 0.4
+    - _Noise_Scale: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WobbleDistance: 0.2
-    - _WobbleFrequency: 50
-    - _WobbleSpeed: 3
+    - _WobbleDistance: 0.3
+    - _WobbleFrequency: 10
+    - _WobbleSpeed: 4
     m_Colors:
-    - _Albedo_Color: {r: 0.25486138, g: 0, b: 1, a: 0}
-    - _Albedo_Scroll: {r: 0, g: 0, b: 0, a: 0}
+    - _Albedo_Color: {r: 0.25486135, g: 0, b: 1, a: 0}
+    - _Albedo_Scroll: {r: 0.05, g: 0, b: 0, a: 0}
     - _Emssion_Color: {r: 1.005235, g: 0, b: 7.999999, a: 0}
     - _Frensel_Color: {r: 0.5026177, g: 0, b: 4, a: 0}
-    - _Noise_Value: {r: 2, g: 2, b: 0, a: 0}
-    - _Vector3: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    - _Noise_Value: {r: 2, g: 0, b: 0, a: 0}
+    - _Vector3: {r: 0.3, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &7403754164471941511
 MonoBehaviour:

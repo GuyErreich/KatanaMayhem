@@ -13,16 +13,21 @@ namespace KatanaMayhem.Scripts
             this.rb = this.GetComponent<Rigidbody>();
         }
 
-        private void OnTriggerEnter(Collider other) {
-            if (!other.gameObject.CompareTag("Panel"))
+        private void OnTriggerEnter(Collider collider) {
+            if (!collider.gameObject.CompareTag("Panel"))
                 return;
 
-            Colors.Types color = other.gameObject.GetComponent<PanelData>().color;
+            print("hit");
+
+            Colors.Types color = collider.gameObject.GetComponent<PanelData>().color;
 
             if (color == slimeColor)
             {
-                var rotation = Quaternion.FromToRotation(Vector3.forward, other.GetContact(0).normal);
-                Instantiate(staticSlime, other., rotation);
+                var collisionPoint = collider.ClosestPoint(transform.position);
+                var collisionNormal = transform.position - collisionPoint;
+
+                var rotation = Quaternion.FromToRotation(Vector3.forward, collisionNormal);
+                Instantiate(staticSlime, collisionPoint, rotation);
                 Destroy(this.gameObject);
             }
         }

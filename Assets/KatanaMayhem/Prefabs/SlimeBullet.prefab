@@ -99,7 +99,7 @@ Rigidbody:
   m_AngularDrag: 100
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!135 &6149424769883086641
@@ -113,7 +113,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.26
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-2964203989639945792
 MonoBehaviour:
@@ -128,3 +128,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staticSlime: {fileID: 78427176851202814, guid: 9ecad86f5d775df4395d7a91fb76301c, type: 3}
+  slimeColor: 0
