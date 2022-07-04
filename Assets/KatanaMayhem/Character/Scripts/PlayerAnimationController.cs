@@ -11,21 +11,23 @@ namespace KatanaMayhem.Character.Scripts
         Vector2 direction;
 
         private Vector2 movement;
+        private bool isRunning = false, isJumping = false;
 
         // Update is called once per frame
         void Update()
         {
-            if(this.movement != Vector2.zero)
-                anim.SetBool("isWalking", true);
-            else
-                anim.SetBool("isWalking", false);
+            var isMoving = this.movement != Vector2.zero ? true : false;
+
+            this.anim.SetBool("isWalking", isMoving);
+            this.anim.SetBool("isRunning", this.isRunning);
             
-            anim.SetFloat("movementX", this.movement.x);
-            anim.SetFloat("movementY", this.movement.y);
+            this.anim.SetFloat("movementX", this.movement.x);
+            this.anim.SetFloat("movementY", this.movement.y);
         }
 
-        public void ReceiveInput(Vector2 movement) {
+        public void ReceiveInput(Vector2 movement, bool isRunning) {
             this.movement = movement;
+            this.isRunning = isRunning;
         }
     }
 }

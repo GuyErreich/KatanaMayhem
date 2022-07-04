@@ -9,14 +9,15 @@ namespace KatanaMayhem.Character.Scripts
     public class MovementController : MonoBehaviour
     {
         [Header("Stats")]
-        [SerializeField]private float speed = 7.0f;
-        [SerializeField]private float jumpForce = 7.0f;
+        [SerializeField] private float speed = 7.0f;
+        [SerializeField, Range(1.1f, 5f)] private float sprintMultiplier = 1.5f;
+        [SerializeField] private float jumpForce = 7.0f;
         
         private CharacterController charController;
         private Vector3 velocity;
         private float ySpeed;
         private Vector2 movement;
-        private bool isJumping;
+        private bool isRunning, isJumping;
 
         // Start is called before the first frame update
         private void Awake()
@@ -35,8 +36,10 @@ namespace KatanaMayhem.Character.Scripts
 
         private void HandleMovement()
         {
+            var speedMultiplier = this.isRunning ? this.sprintMultiplier : 1;
+            
             var direction = (this.transform.right * this.movement.x) + (this.transform.forward * this.movement.y);
-            this.velocity = direction * this.speed;
+            this.velocity = direction * this.speed * speedMultiplier;
             this.velocity.y = this.ySpeed;
 
             this.charController.Move(this.velocity * Time.deltaTime);
@@ -65,9 +68,10 @@ namespace KatanaMayhem.Character.Scripts
             }
         }
 
-        public void ReceiveInput(Vector2 movement, bool isJumping)
+        public void ReceiveInput(Vector2 movement, bool isRunning, bool isJumping)
         {
             this.movement = movement;
+            this.isRunning = isRunning;
             this.isJumping = isJumping;
         }
     }
