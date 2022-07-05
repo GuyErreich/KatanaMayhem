@@ -25,6 +25,11 @@ namespace KatanaMayhem.Character.Scripts
             this.anim.SetFloat("movementY", this.movement.y);
         }
 
+        public void Point()
+        {
+            this.anim.SetTrigger("Point");
+        }
+
         public void ReceiveInput(Vector2 movement, bool isRunning) {
             this.movement = movement;
             this.isRunning = isRunning;

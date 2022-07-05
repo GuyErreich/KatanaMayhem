@@ -37,6 +37,7 @@ namespace KatanaMayhem.Character.Scripts
             this.characterInput.Jump.started += ctx => this.isJumping = ctx.ReadValueAsButton();
             this.characterInput.Jump.canceled += ctx => this.isJumping = ctx.ReadValueAsButton();
             this.characterInput.Shoot.performed += ctx => this.jellyShoot.Shoot();
+            this.characterInput.Shoot.performed += ctx => this.animationController.Point();
         }
 
         private void Update() 
