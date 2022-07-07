@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08cba022ad94a4949be7754d5a2e23b6, type: 3}
+  m_Name: Slime Storage
+  m_EditorClassIdentifier: 
+  keys: 0000000001000000
+  values:
+  - {fileID: 6149424769883086640, guid: da28a937b59cc7142acfed851b9ce772, type: 3}
+  - {fileID: 6149424769883086640, guid: d26792ed4d956ff43822550fc7fe0abf, type: 3}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1155412458}
   - component: {fileID: 1986370764372306949}
   m_Layer: 0
-  m_Name: SlimeHardend
+  m_Name: GreenSlimeHardend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

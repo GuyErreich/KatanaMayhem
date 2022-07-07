@@ -2,26 +2,24 @@ using UnityEngine;
 
 namespace KatanaMayhem.Scripts
 {
-    public class ColliderHit : MonoBehaviour {
+    [RequireComponent(typeof(SlimeData))]
+    public class SlimeColliderHit : MonoBehaviour {
         
         [SerializeField] private GameObject staticSlime;
-        [SerializeField] private Colors.Types slimeColor;
 
-        Rigidbody rb;
+        private Colors.Types color;
 
         private void Awake() {
-            this.rb = this.GetComponent<Rigidbody>();
+            this.color = this.GetComponent<SlimeData>().color;
         }
 
         private void OnTriggerEnter(Collider collider) {
             if (!collider.gameObject.CompareTag("Panel"))
                 return;
 
-            print("hit");
+            Colors.Types targetColor = collider.gameObject.GetComponent<PanelData>().color;
 
-            Colors.Types color = collider.gameObject.GetComponent<PanelData>().color;
-
-            if (color == slimeColor)
+            if (color == targetColor)
             {
                 var collisionPoint = collider.ClosestPoint(transform.position);
                 var collisionNormal = transform.position - collisionPoint;

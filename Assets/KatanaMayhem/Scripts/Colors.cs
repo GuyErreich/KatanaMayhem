@@ -4,7 +4,8 @@ namespace KatanaMayhem.Scripts
     {
         public enum Types
         {
-            Purple = 0
+            Purple = 0,
+            Green = 1
         }
     }
 }
