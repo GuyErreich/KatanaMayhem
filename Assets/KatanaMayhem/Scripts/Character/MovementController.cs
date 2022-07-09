@@ -4,8 +4,7 @@ using UnityEngine;
 
 namespace KatanaMayhem.Character.Scripts
 {
-    // [RequireComponent(typeof(Rigidbody))]
-    // [RequireComponent(typeof(CapsuleCollider))]
+    [RequireComponent(typeof(CharacterController))]
     public class MovementController : MonoBehaviour
     {
         [Header("Stats")]

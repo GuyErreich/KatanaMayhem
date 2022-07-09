@@ -6,6 +6,7 @@ namespace KatanaMayhem.Character.Scripts
 {    
     [RequireComponent(typeof(MovementController))]
     [RequireComponent(typeof(PlayerAnimationController))]
+    [RequireComponent(typeof(JellyShoot))]
     public class PlayerInputManager : MonoBehaviour
     {
         private PlayerControls controls;
@@ -14,6 +15,7 @@ namespace KatanaMayhem.Character.Scripts
         private MovementController movementController;
         private PlayerAnimationController animationController;
         private JellyShoot jellyShoot;
+        private Trajectory trajectory;
 
         private Vector2 movement;
         private bool isJumping, isRunnig;
@@ -28,6 +30,7 @@ namespace KatanaMayhem.Character.Scripts
             this.movementController = this.GetComponent<MovementController>();
             this.animationController = this.GetComponent<PlayerAnimationController>();
             this.jellyShoot = this.GetComponent<JellyShoot>();
+            this.trajectory = this.GetComponent<Trajectory>();
 
             this.controls = new PlayerControls();
             characterInput = this.controls.Character;
@@ -38,6 +41,7 @@ namespace KatanaMayhem.Character.Scripts
             this.characterInput.Jump.canceled += ctx => this.isJumping = ctx.ReadValueAsButton();
             this.characterInput.Shoot.performed += ctx => this.jellyShoot.Shoot();
             this.characterInput.Shoot.performed += ctx => this.animationController.Point();
+            this.characterInput.Aim.performed += ctx => this.trajectory.Draw();
         }
 
         private void Update() 

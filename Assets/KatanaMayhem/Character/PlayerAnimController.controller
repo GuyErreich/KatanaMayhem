@@ -205,6 +205,18 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-5469101633005150763
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 444674062ee67a243ba4c6518d0eeddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-4723872738663309692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,6 +365,19 @@ BlendTree:
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 2
+--- !u!114 &-1126297809229836405
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf1bc934a1f6a841981ba1d1a9f8360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 0.7
 --- !u!206 &-988764731581755749
 BlendTree:
   m_ObjectHideFlags: 1
@@ -432,7 +457,9 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8557574307702303333}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -1126297809229836405}
+  - {fileID: -5469101633005150763}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

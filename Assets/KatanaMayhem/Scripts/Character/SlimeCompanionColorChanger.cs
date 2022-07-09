@@ -42,9 +42,9 @@ namespace KatanaMayhem.Character.Scripts {
                 Destroy(this.previousSlime);
 
             this.previousSlime = Instantiate(slime, Anchor);
-            this.previousSlime.GetComponent<Rigidbody>().isKinematic = true;
+            Destroy(this.previousSlime.GetComponent<Rigidbody>());
+            Destroy(this.previousSlime.GetComponent<SphereCollider>());
             this.previousSlime.transform.localPosition = Vector3.zero;
-
         }
 
     }

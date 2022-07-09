@@ -7,8 +7,8 @@ PhysicMaterial:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sticky
-  dynamicFriction: 2
-  staticFriction: 2
+  dynamicFriction: 50
+  staticFriction: 50
   bounciness: 0.1
   frictionCombine: 3
-  bounceCombine: 3
+  bounceCombine: 1
