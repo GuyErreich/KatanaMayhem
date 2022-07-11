@@ -53,7 +53,7 @@ namespace KatanaMayhem.Character.Scripts
                     ""id"": ""dcf54d94-6ddf-473f-bd2e-a63c554ddd45"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
                 },
                 {

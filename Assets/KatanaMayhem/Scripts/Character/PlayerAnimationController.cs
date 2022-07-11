@@ -8,14 +8,16 @@ namespace KatanaMayhem.Character.Scripts
     {
         [SerializeField] private Animator anim;
 
-        Vector2 direction;
-
         private Vector2 movement;
-        private bool isRunning = false, isJumping = false;
+        private bool isRunning = false, isJumping = false, isPointing = false;
 
         // Update is called once per frame
-        void Update()
-        {
+        void Update() {
+            this.Movement();
+            this.Point();
+        }
+
+        private void Movement() {
             var isMoving = this.movement != Vector2.zero ? true : false;
 
             this.anim.SetBool("isWalking", isMoving);
@@ -25,14 +27,14 @@ namespace KatanaMayhem.Character.Scripts
             this.anim.SetFloat("movementY", this.movement.y);
         }
 
-        public void Point()
-        {
-            this.anim.SetTrigger("Point");
+        private  void Point() {
+            this.anim.SetBool("Point", isPointing);
         }
 
-        public void ReceiveInput(Vector2 movement, bool isRunning) {
+        public void ReceiveInput(Vector2 movement, bool isRunning, bool isPointing) {
             this.movement = movement;
             this.isRunning = isRunning;
+            this.isPointing = isPointing;
         }
     }
 }
