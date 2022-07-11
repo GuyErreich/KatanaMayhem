@@ -12,6 +12,7 @@ namespace KatanaMayhem.Character.Scripts
         // [SerializeField] private GameObject refShoot;
         [SerializeField] private Transform shootAnchor, aimCaster;
         [SerializeField] private float speed;
+        [SerializeField] private float delay = 0.1f;
         [SerializeField] private LayerMask mask;
         [SerializeField] private SlimeStorage SlimesStack;
 
@@ -19,6 +20,7 @@ namespace KatanaMayhem.Character.Scripts
         private GameObject sphere;
         private SlimeData slimeData;
         private Colors.Types baseColor;
+        private bool isShooting;
 
         public Vector3 Speed { get; private set;}
 
@@ -26,6 +28,10 @@ namespace KatanaMayhem.Character.Scripts
             // this.sphere = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere));
             this.slimeData = this.GetComponent<SlimeData>();
             this.baseColor =  this.slimeData.color;
+        }
+
+        private void Start() {
+            StartCoroutine(this.Shoot());
         }
 
         private void FixedUpdate() {
@@ -38,15 +44,26 @@ namespace KatanaMayhem.Character.Scripts
         }
 
 
-        public void Shoot() {
-            var color = this.slimeData.color;
-            var valueIndex = this.SlimesStack.Keys.IndexOf(color);
-            GameObject refShoot = this.SlimesStack.Values[valueIndex];
+        public IEnumerator Shoot() {
+            while (true) {
+                if (this.isShooting) {
+                    var color = this.slimeData.color;
+                    var valueIndex = this.SlimesStack.Keys.IndexOf(color);
+                    GameObject refShoot = this.SlimesStack.Values[valueIndex];
 
-            var rb = Instantiate(refShoot, shootAnchor.position, shootAnchor.rotation).GetComponent<Rigidbody>();
-            rb.AddForce(Speed, ForceMode.VelocityChange);
+                    yield return new WaitForSeconds(this.delay);
 
-            this.slimeData.color = baseColor;
+                    var rb = Instantiate(refShoot, shootAnchor.position, shootAnchor.rotation).GetComponent<Rigidbody>();
+                    rb.AddForce(Speed, ForceMode.VelocityChange);
+
+                    this.slimeData.color = baseColor;
+                }
+                yield return null;
+            }
+        }
+
+        public void ReceiveInput(bool isShooting) {
+            this.isShooting = isShooting;
         }
     }
 }

@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: f0393d2fe93bef5439b6c2a384475dcf
+guid: b512660dcc9ad7f4ea46fcaf1a6fc34f
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Charge
+    second: Pointing
   - first:
-      74: 5125084868966520545
-    second: Idle@Charge
+      74: 5739409776631829111
+    second: Idle@Pointing
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -39,11 +39,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle@Charge
+      name: Idle@Pointing
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 90
-      lastFrame: 113
+      firstFrame: 29
+      lastFrame: 45
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -55,7 +55,7 @@ ModelImporter:
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 1
+      keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
