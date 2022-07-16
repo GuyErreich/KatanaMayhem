@@ -8,9 +8,10 @@ namespace KatanaMayhem.Character.Scripts
     public class MovementController : MonoBehaviour
     {
         [Header("Stats")]
-        [SerializeField] private float speed = 7.0f;
+        [SerializeField] private float speed = 7f;
+        [SerializeField] private float rotationSpeed = 2f;
         [SerializeField, Range(1.1f, 5f)] private float sprintMultiplier = 1.5f;
-        [SerializeField] private float jumpForce = 7.0f, jumpGracePeriod = 0.2f;
+        [SerializeField] private float jumpForce = 7f, jumpGracePeriod = 0.2f;
         
         private CharacterController charController;
         private Vector3 velocity;
@@ -30,8 +31,11 @@ namespace KatanaMayhem.Character.Scripts
         {
             this.HandleMovement();
             this.HandleGravity();
-            this.HandleRotation();
             this.HandleJump();
+        }
+
+        private void FixedUpdate() {
+            this.HandleRotation();
         }
 
         private void HandleMovement()
@@ -55,7 +59,7 @@ namespace KatanaMayhem.Character.Scripts
 
         private void HandleRotation()
         {
-            float rotationAngle = Mathf.LerpAngle(this.transform.eulerAngles.y, Camera.main.transform.eulerAngles.y, 2f * Time.deltaTime);
+            float rotationAngle = Mathf.LerpAngle(this.transform.eulerAngles.y, Camera.main.transform.eulerAngles.y, rotationSpeed * Time.fixedDeltaTime);
             this.transform.eulerAngles = new Vector3(0,rotationAngle,0);
         }
 

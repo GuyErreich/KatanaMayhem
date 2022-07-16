@@ -67,19 +67,11 @@ namespace KatanaMayhem.Character.Scripts
             var valueIndex = this.SlimesStack.Keys.IndexOf(color);
             GameObject refShoot = this.SlimesStack.Values[valueIndex];
 
-                    var rb = Instantiate(refShoot, shootAnchor.position, shootAnchor.rotation).GetComponent<Rigidbody>();
-                    rb.AddForce(Speed, ForceMode.VelocityChange);
+            var rb = Instantiate(refShoot, shootAnchor.position, shootAnchor.rotation).GetComponent<Rigidbody>();
+            rb.AddForce(Speed, ForceMode.VelocityChange);
 
-                    this.slimeData.color = baseColor;
-                }
-                yield return null;
-            }
+            this.slimeData.color = baseColor;
         }
-
-        public void ReceiveInput(bool isShooting) {
-            this.isShooting = isShooting;
-        }
-
 
         public void ReceiveInput(bool isShooting) {
             this.isShooting = isShooting;

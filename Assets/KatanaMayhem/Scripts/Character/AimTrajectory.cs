@@ -18,7 +18,7 @@ namespace KatanaMayhem.Character.Scripts
         private Vector3 startingVelocity;
         private bool isAming;
 
-        private void LateUpdate() {
+        private void Update() {
             if (this.isAming)
                 this.Draw();
             else
