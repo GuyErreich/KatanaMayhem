@@ -8,13 +8,23 @@ namespace KatanaMayhem.Character.Scripts
     {
         [SerializeField] private Animator anim;
 
+        private CharacterController charController;
+        private MovementController movementController;
+
         private Vector2 movement;
         private bool isRunning = false, isJumping = false, isPointing = false;
+
+        private void Awake() {
+            this.charController = this.GetComponent<CharacterController>();
+            this.movementController = this.GetComponent<MovementController>();
+        }
 
         // Update is called once per frame
         void Update() {
             this.Movement();
             this.Point();
+            this.Jump();
+            this.isGrounded();
         }
 
         private void Movement() {
@@ -31,9 +41,22 @@ namespace KatanaMayhem.Character.Scripts
             this.anim.SetBool("Point", isPointing);
         }
 
-        public void ReceiveInput(Vector2 movement, bool isRunning, bool isPointing) {
+        private void Jump() {
+            if (this.movementController.IsJumping) {
+                this.anim.SetTrigger("Jump");
+                 this.anim.SetBool("isGrounded", false);
+            }
+        }
+
+        private void isGrounded() {
+            if(this.charController.isGrounded)
+                this.anim.SetBool("isGrounded", true);
+        }
+
+        public void ReceiveInput(Vector2 movement, bool isRunning, bool isJumping, bool isPointing) {
             this.movement = movement;
             this.isRunning = isRunning;
+            this.isJumping = isJumping;
             this.isPointing = isPointing;
         }
     }

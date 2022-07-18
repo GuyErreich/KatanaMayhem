@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace KatanaMayhem.Scripts
 {
-    public class EventHandlesHolder : Mono
+    public class EventHandlesHolder : MonoBehaviour
     {
         public UnityEvent eventHandler;
 

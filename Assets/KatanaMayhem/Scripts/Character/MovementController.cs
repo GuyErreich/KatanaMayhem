@@ -18,7 +18,9 @@ namespace KatanaMayhem.Character.Scripts
         private Vector2 movement;
         private float ySpeed;
         private float? lastGroundedTime, jumpButtonPressedTime;
-        private bool isRunning, isJumping;
+        private bool isRunning;
+
+        public bool IsJumping { get; private set; }
 
         // Start is called before the first frame update
         private void Awake()
@@ -67,7 +69,7 @@ namespace KatanaMayhem.Character.Scripts
             if(this.charController.isGrounded)
                 this.lastGroundedTime =  Time.time;
 
-            if (this.isJumping)
+            if (this.IsJumping)
                 this.jumpButtonPressedTime = Time.time;
 
             // The same as checking ground but gives a little preiod where it still considers you grounded.
@@ -77,7 +79,7 @@ namespace KatanaMayhem.Character.Scripts
                 //This does the same but gives a little period while you are in the air 
                 if (Time.time - this.jumpButtonPressedTime <= this.jumpGracePeriod) {
                     this.ySpeed = jumpForce;
-                    this.isJumping = false;
+                    this.IsJumping = false;
 
                     this.lastGroundedTime = null;
                     this.jumpButtonPressedTime = null;
@@ -89,7 +91,7 @@ namespace KatanaMayhem.Character.Scripts
         {
             this.movement = movement;
             this.isRunning = isRunning;
-            this.isJumping = isJumping;
+            this.IsJumping = isJumping;
         }
     }
 }

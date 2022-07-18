@@ -39,16 +39,15 @@ namespace KatanaMayhem.Character.Scripts
             this.characterInput.Run.performed += ctx => this.isRunnig = ctx.ReadValueAsButton();
             this.characterInput.Jump.started += ctx => this.isJumping = ctx.ReadValueAsButton();
             this.characterInput.Jump.canceled += ctx => this.isJumping = ctx.ReadValueAsButton();
-            this.characterInput.Shoot.started += ctx => this.isShooting = ctx.ReadValueAsButton();
-            this.characterInput.Shoot.canceled += ctx => this.isShooting = ctx.ReadValueAsButton();
-            this.characterInput.Aim.performed += ctx => this.isAming = ctx.ReadValueAsButton();
+            this.characterInput.Shoot.performed += ctx => this.isShooting = ctx.ReadValueAsButton();
+            this.characterInput.Shoot.performed += ctx => this.isAming = ctx.ReadValueAsButton();
         }
 
         private void Update() 
         {
             this.movementController.ReceiveInput(this.movement, this.isRunnig, this.isJumping);
-            this.jellyShoot.ReceiveInput(this.isShooting);
-            this.animationController.ReceiveInput(this.movement, this.isRunnig, this.isShooting);
+            this.animationController.ReceiveInput(this.movement, this.isRunnig, this.isJumping, this.isShooting);
+            // this.jellyShoot.ReceiveInput(this.isShooting);
             this.aimTrajectory.ReceiveInput(this.isAming);
         }
 
