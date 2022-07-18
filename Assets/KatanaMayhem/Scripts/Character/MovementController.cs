@@ -32,15 +32,12 @@ namespace KatanaMayhem.Character.Scripts
             this.HandleMovement();
             this.HandleGravity();
             this.HandleJump();
-        }
-
-        private void FixedUpdate() {
             this.HandleRotation();
         }
 
         private void HandleMovement()
         {
-            var speedMultiplier = this.isRunning ? this.sprintMultiplier : 1;
+            var speedMultiplier = this.isRunning ? this.sprintMultiplier : 1f;
             
             var direction = (this.transform.right * this.movement.x) + (this.transform.forward * this.movement.y);
             this.velocity = direction * this.speed * speedMultiplier;
@@ -53,14 +50,17 @@ namespace KatanaMayhem.Character.Scripts
         {
             if (!this.charController.isGrounded)
                 this.ySpeed += Physics.gravity.y * Time.deltaTime;
-            else if(ySpeed < 0)
-                ySpeed = 0;
+            else if(ySpeed < 0f)
+                ySpeed = 0f;
         }
 
         private void HandleRotation()
         {
-            float rotationAngle = Mathf.LerpAngle(this.transform.eulerAngles.y, Camera.main.transform.eulerAngles.y, rotationSpeed * Time.fixedDeltaTime);
-            this.transform.eulerAngles = new Vector3(0,rotationAngle,0);
+            if(this.movement.x != 0f || this.movement.y != 0f)
+            {
+                float rotationAngle = Mathf.LerpAngle(this.transform.eulerAngles.y, Camera.main.transform.eulerAngles.y, rotationSpeed * Time.deltaTime);
+                this.transform.eulerAngles = new Vector3(0f, rotationAngle, 0f);
+            }
         }
 
         private void HandleJump() {

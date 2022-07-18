@@ -30,9 +30,9 @@ namespace KatanaMayhem.Character.Scripts
             this.baseColor =  this.slimeData.color;
         }
 
-        // private void Start() {
-        //     StartCoroutine(this.Shoot());
-        // }
+        private void Start() {
+            StartCoroutine(this.Shoot());
+        }
 
         private void FixedUpdate() {
             Ray ray = new Ray(this.aimCaster.position, this.aimCaster.forward);
@@ -44,34 +44,34 @@ namespace KatanaMayhem.Character.Scripts
         }
 
 
-        // public IEnumerator Shoot() {
-        //     while (true) {
-        //         if (this.isShooting) {
-        //             var color = this.slimeData.color;
-        //             var valueIndex = this.SlimesStack.Keys.IndexOf(color);
-        //             GameObject refShoot = this.SlimesStack.Values[valueIndex];
+        public IEnumerator Shoot() {
+            while (true) {
+                if (this.isShooting) {
+                    var color = this.slimeData.color;
+                    var valueIndex = this.SlimesStack.Keys.IndexOf(color);
+                    GameObject refShoot = this.SlimesStack.Values[valueIndex];
 
-        //             yield return new WaitForSeconds(this.delay);
+                    yield return new WaitForSeconds(this.delay);
 
-        //             var rb = Instantiate(refShoot, shootAnchor.position, shootAnchor.rotation).GetComponent<Rigidbody>();
-        //             rb.AddForce(Speed, ForceMode.VelocityChange);
+                    var rb = Instantiate(refShoot, shootAnchor.position, shootAnchor.rotation).GetComponent<Rigidbody>();
+                    rb.AddForce(Speed, ForceMode.VelocityChange);
 
-        //             this.slimeData.color = baseColor;
-        //         }
-        //         yield return null;
-        //     }
-        // }
-
-        public void ShootPassive() {
-            var color = this.slimeData.color;
-            var valueIndex = this.SlimesStack.Keys.IndexOf(color);
-            GameObject refShoot = this.SlimesStack.Values[valueIndex];
-
-            var rb = Instantiate(refShoot, shootAnchor.position, shootAnchor.rotation).GetComponent<Rigidbody>();
-            rb.AddForce(Speed, ForceMode.VelocityChange);
-
-            this.slimeData.color = baseColor;
+                    this.slimeData.color = baseColor;
+                }
+                yield return null;
+            }
         }
+
+        // public void ShootPassive() {
+        //     var color = this.slimeData.color;
+        //     var valueIndex = this.SlimesStack.Keys.IndexOf(color);
+        //     GameObject refShoot = this.SlimesStack.Values[valueIndex];
+
+        //     var rb = Instantiate(refShoot, shootAnchor.position, shootAnchor.rotation).GetComponent<Rigidbody>();
+        //     rb.AddForce(Speed, ForceMode.VelocityChange);
+
+        //     this.slimeData.color = baseColor;
+        // }
 
         public void ReceiveInput(bool isShooting) {
             this.isShooting = isShooting;
