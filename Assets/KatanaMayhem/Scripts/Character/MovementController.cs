@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace KatanaMayhem.Character.Scripts
@@ -15,12 +13,16 @@ namespace KatanaMayhem.Character.Scripts
         
         private CharacterController charController;
         private Vector3 velocity;
-        private Vector2 movement;
         private float ySpeed;
         private float? lastGroundedTime, jumpButtonPressedTime;
-        private bool isRunning;
+        private bool runPressed ,jumpPressed;
 
-        public bool IsJumping { get; private set; }
+        protected Vector2 movement;
+        public bool isMoving { get; protected set; } 
+        public bool isRunning { get; protected set; } 
+        public bool isJumping { get; protected set; }
+        public bool isGrounded { get => this.charController.isGrounded; }
+
 
         // Start is called before the first frame update
         private void Awake()
@@ -29,7 +31,7 @@ namespace KatanaMayhem.Character.Scripts
         }
 
         // Update is called once per frame
-        private void Update()
+        protected virtual void Update()
         {
             this.HandleMovement();
             this.HandleGravity();
@@ -39,13 +41,16 @@ namespace KatanaMayhem.Character.Scripts
 
         private void HandleMovement()
         {
-            var speedMultiplier = this.isRunning ? this.sprintMultiplier : 1f;
-            
+            this.isMoving = this.movement != Vector2.zero ? true : false;
+
+            var speedMultiplier = this.runPressed ? this.sprintMultiplier : 1f;
             var direction = (this.transform.right * this.movement.x) + (this.transform.forward * this.movement.y);
+
             this.velocity = direction * this.speed * speedMultiplier;
             this.velocity.y = this.ySpeed;
 
             this.charController.Move(this.velocity * Time.deltaTime);
+
         }
 
         private void HandleGravity()
@@ -67,9 +72,12 @@ namespace KatanaMayhem.Character.Scripts
 
         private void HandleJump() {
             if(this.charController.isGrounded)
+            {
+                this.isJumping = false;
                 this.lastGroundedTime =  Time.time;
+            }
 
-            if (this.IsJumping)
+            if (this.jumpPressed)
                 this.jumpButtonPressedTime = Time.time;
 
             // The same as checking ground but gives a little preiod where it still considers you grounded.
@@ -79,7 +87,8 @@ namespace KatanaMayhem.Character.Scripts
                 //This does the same but gives a little period while you are in the air 
                 if (Time.time - this.jumpButtonPressedTime <= this.jumpGracePeriod) {
                     this.ySpeed = jumpForce;
-                    this.IsJumping = false;
+                    this.isJumping = true;
+                    // this.jumpPressed = false;
 
                     this.lastGroundedTime = null;
                     this.jumpButtonPressedTime = null;
@@ -87,11 +96,11 @@ namespace KatanaMayhem.Character.Scripts
             }
         }
 
-        public void ReceiveInput(Vector2 movement, bool isRunning, bool isJumping)
+        public void ReceiveInput(Vector2 movement, bool runPressed, bool jumpPressed)
         {
             this.movement = movement;
-            this.isRunning = isRunning;
-            this.IsJumping = isJumping;
+            this.runPressed = runPressed;
+            this.jumpPressed = jumpPressed;
         }
     }
 }

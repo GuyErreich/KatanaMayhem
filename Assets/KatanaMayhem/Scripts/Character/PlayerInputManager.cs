@@ -4,16 +4,13 @@ using UnityEngine;
 
 namespace KatanaMayhem.Character.Scripts
 {    
-    [RequireComponent(typeof(MovementController))]
-    [RequireComponent(typeof(PlayerAnimationController))]
+    [RequireComponent(typeof(PlayerController))]
     [RequireComponent(typeof(JellyShoot))]
     public class PlayerInputManager : MonoBehaviour
     {
         private PlayerControls controls;
         private PlayerControls.CharacterActions characterInput;
-
-        private MovementController movementController;
-        private PlayerAnimationController animationController;
+        private PlayerController playerController;
         private JellyShoot jellyShoot;
         private AimTrajectory aimTrajectory;
 
@@ -27,8 +24,7 @@ namespace KatanaMayhem.Character.Scripts
             //to hide the curser
             Cursor.visible = false;
 
-            this.movementController = this.GetComponent<MovementController>();
-            this.animationController = this.GetComponent<PlayerAnimationController>();
+            this.playerController = this.GetComponent<PlayerController>();
             this.jellyShoot = this.GetComponent<JellyShoot>();
             this.aimTrajectory = this.GetComponent<AimTrajectory>();
 
@@ -45,9 +41,7 @@ namespace KatanaMayhem.Character.Scripts
 
         private void Update() 
         {
-            this.movementController.ReceiveInput(this.movement, this.isRunnig, this.isJumping);
-            this.animationController.ReceiveInput(this.movement, this.isRunnig, this.isJumping, this.isShooting);
-            // this.jellyShoot.ReceiveInput(this.isShooting);
+            this.playerController.ReceiveInput(this.movement, this.isRunnig, this.isJumping, this.isShooting);
             this.aimTrajectory.ReceiveInput(this.isAming);
         }
 
