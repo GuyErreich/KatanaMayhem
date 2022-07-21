@@ -218,7 +218,7 @@ AnimatorStateTransition:
   m_ExitTime: 0.3
   m_HasExitTime: 1
   m_HasFixedDuration: 1
-  m_InterruptionSource: 2
+  m_InterruptionSource: 1
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1101 &-4268973110653809740
@@ -267,7 +267,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Charge
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 9123861706812423770}
@@ -728,7 +728,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ChargeStart
-  m_Speed: 1
+  m_Speed: 3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 2029832084973033557}
@@ -1104,7 +1104,7 @@ BlendTree:
     m_DirectBlendParameter: movementX
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 64a347896935a594d9732754f1cb3038, type: 3}
+    m_Motion: {fileID: -203655887218126122, guid: 3b47cd575876ee246b8d1d32e774609c, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1
@@ -1117,7 +1117,7 @@ BlendTree:
   m_MaxThreshold: 0
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
-  m_BlendType: 3
+  m_BlendType: 1
 --- !u!1101 &7126194302535929878
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1288,11 +1288,11 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 1
   serializedVersion: 3
-  m_TransitionDuration: 0.6
+  m_TransitionDuration: 0.3
   m_TransitionOffset: 0
-  m_ExitTime: 0.70588243
+  m_ExitTime: 0.5
   m_HasExitTime: 1
   m_HasFixedDuration: 1
-  m_InterruptionSource: 0
+  m_InterruptionSource: 2
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1

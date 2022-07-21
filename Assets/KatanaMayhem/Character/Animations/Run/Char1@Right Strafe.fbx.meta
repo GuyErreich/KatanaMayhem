@@ -46,7 +46,7 @@ ModelImporter:
       lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
-      level: 0
+      level: 0.02
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
@@ -56,9 +56,9 @@ ModelImporter:
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves:
@@ -76,7 +76,7 @@ ModelImporter:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 0.3305947
+            time: 0.2930962
             value: 0
             inSlope: 0
             outSlope: 0
@@ -94,7 +94,7 @@ ModelImporter:
             inWeight: 0.33333334
             outWeight: 0.33333334
           - serializedVersion: 3
-            time: 0.6408509
+            time: 0.58115184
             value: 1
             inSlope: 0
             outSlope: 0
@@ -103,7 +103,16 @@ ModelImporter:
             inWeight: 0.33333334
             outWeight: 0.33333334
           - serializedVersion: 3
-            time: 0.79357815
+            time: 0.6142701
+            value: 0.2
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.65779936
+          - serializedVersion: 3
+            time: 0.70608425
             value: 0
             inSlope: 0
             outSlope: 0
@@ -137,7 +146,7 @@ ModelImporter:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 0.08469319
+            time: 0.09505703
             value: 1
             inSlope: 0
             outSlope: 0
@@ -145,6 +154,15 @@ ModelImporter:
             weightedMode: 0
             inWeight: 0.33333334
             outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.1418556
+            value: 0.2
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.5567267
           - serializedVersion: 3
             time: 0.24524187
             value: 0
@@ -164,7 +182,7 @@ ModelImporter:
             inWeight: 0.33333334
             outWeight: 0.33333334
           - serializedVersion: 3
-            time: 0.86365414
+            time: 0.8824072
             value: 1
             inSlope: 0
             outSlope: 0

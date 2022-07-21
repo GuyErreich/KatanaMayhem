@@ -142,3 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staticSlime: {fileID: 78427176851202814, guid: eeced8b7dd5a1564f9bd1e4ed00b63dd, type: 3}
+  offset: -0.7

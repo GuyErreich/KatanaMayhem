@@ -42,6 +42,7 @@ namespace KatanaMayhem.Character.Scripts
         private void Update() 
         {
             this.playerController.ReceiveInput(this.movement, this.isRunnig, this.isJumping, this.isShooting);
+            this.jellyShoot.ReceiveInput(this.isShooting);
             this.aimTrajectory.ReceiveInput(this.isAming);
         }
 

@@ -6,6 +6,7 @@ namespace KatanaMayhem.Scripts
     public class SlimeColliderHit : MonoBehaviour {
         
         [SerializeField] private GameObject staticSlime;
+        [SerializeField] private float offset;
 
         private Colors.Types color;
 
@@ -25,7 +26,8 @@ namespace KatanaMayhem.Scripts
                 var collisionNormal = transform.position - collisionPoint;
 
                 var rotation = Quaternion.FromToRotation(Vector3.forward, collisionNormal);
-                Instantiate(staticSlime, collisionPoint, rotation);
+                var hardendSlime = Instantiate(staticSlime, collisionPoint, rotation);
+                hardendSlime.transform.position += hardendSlime.transform.forward * this.offset;
                 Destroy(this.gameObject);
             }
         }

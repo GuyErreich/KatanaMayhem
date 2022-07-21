@@ -35,7 +35,7 @@ namespace KatanaMayhem.Character.Scripts
                 newPoint.y = this.startingPoint.position.y + this.startingVelocity.y * t + (Physics.gravity.y * t * t) / 2;
                 points.Add(newPoint);
 
-                if (Physics.OverlapSphere(newPoint, 2, this.CollidableLayers).Length > 0) {
+                if (Physics.OverlapSphere(newPoint, 0.5f, this.CollidableLayers, QueryTriggerInteraction.Collide).Length > 0) {
                     this.lineRenderer.positionCount = points.Count;
                     break;
                 }
