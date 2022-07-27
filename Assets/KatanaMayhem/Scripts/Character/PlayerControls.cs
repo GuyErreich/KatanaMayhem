@@ -176,6 +176,54 @@ namespace KatanaMayhem.Character.Scripts
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""SlimeRepo"",
+            ""id"": ""910484dc-c720-439c-80c8-9d68e3ce5eaf"",
+            ""actions"": [
+                {
+                    ""name"": ""Purple"",
+                    ""type"": ""Button"",
+                    ""id"": ""91bdae57-be74-4ad2-9409-c55511c0c230"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Green"",
+                    ""type"": ""Button"",
+                    ""id"": ""403e65f4-b935-4ef5-ab9c-a91be7dc6bda"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e6f8e5f9-063b-4804-ad43-bd0d2a7a44e2"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Green"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b68d0564-4d32-4ad2-aad3-423b05154d82"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Purple"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -187,6 +235,10 @@ namespace KatanaMayhem.Character.Scripts
             m_Character_Shoot = m_Character.FindAction("Shoot", throwIfNotFound: true);
             m_Character_Aim = m_Character.FindAction("Aim", throwIfNotFound: true);
             m_Character_Run = m_Character.FindAction("Run", throwIfNotFound: true);
+            // SlimeRepo
+            m_SlimeRepo = asset.FindActionMap("SlimeRepo", throwIfNotFound: true);
+            m_SlimeRepo_Purple = m_SlimeRepo.FindAction("Purple", throwIfNotFound: true);
+            m_SlimeRepo_Green = m_SlimeRepo.FindAction("Green", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -307,6 +359,47 @@ namespace KatanaMayhem.Character.Scripts
             }
         }
         public CharacterActions @Character => new CharacterActions(this);
+
+        // SlimeRepo
+        private readonly InputActionMap m_SlimeRepo;
+        private ISlimeRepoActions m_SlimeRepoActionsCallbackInterface;
+        private readonly InputAction m_SlimeRepo_Purple;
+        private readonly InputAction m_SlimeRepo_Green;
+        public struct SlimeRepoActions
+        {
+            private @PlayerControls m_Wrapper;
+            public SlimeRepoActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Purple => m_Wrapper.m_SlimeRepo_Purple;
+            public InputAction @Green => m_Wrapper.m_SlimeRepo_Green;
+            public InputActionMap Get() { return m_Wrapper.m_SlimeRepo; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(SlimeRepoActions set) { return set.Get(); }
+            public void SetCallbacks(ISlimeRepoActions instance)
+            {
+                if (m_Wrapper.m_SlimeRepoActionsCallbackInterface != null)
+                {
+                    @Purple.started -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnPurple;
+                    @Purple.performed -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnPurple;
+                    @Purple.canceled -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnPurple;
+                    @Green.started -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnGreen;
+                    @Green.performed -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnGreen;
+                    @Green.canceled -= m_Wrapper.m_SlimeRepoActionsCallbackInterface.OnGreen;
+                }
+                m_Wrapper.m_SlimeRepoActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Purple.started += instance.OnPurple;
+                    @Purple.performed += instance.OnPurple;
+                    @Purple.canceled += instance.OnPurple;
+                    @Green.started += instance.OnGreen;
+                    @Green.performed += instance.OnGreen;
+                    @Green.canceled += instance.OnGreen;
+                }
+            }
+        }
+        public SlimeRepoActions @SlimeRepo => new SlimeRepoActions(this);
         public interface ICharacterActions
         {
             void OnMovement(InputAction.CallbackContext context);
@@ -314,6 +407,11 @@ namespace KatanaMayhem.Character.Scripts
             void OnShoot(InputAction.CallbackContext context);
             void OnAim(InputAction.CallbackContext context);
             void OnRun(InputAction.CallbackContext context);
+        }
+        public interface ISlimeRepoActions
+        {
+            void OnPurple(InputAction.CallbackContext context);
+            void OnGreen(InputAction.CallbackContext context);
         }
     }
 }

@@ -4,35 +4,39 @@ using KatanaMayhem.Scripts.DataObjects;
 
 namespace KatanaMayhem.Character.Scripts
 {
-    [RequireComponent(typeof(SlimeData))]
     public class JellyShoot : MonoBehaviour
     {
+        [SerializeField] private Colors.Types slimeColor;
         [SerializeField] private Transform shootAnchor, aimCaster;
         [SerializeField] private float maxForce = 1000f;
         [SerializeField] private float forceStartPercentage = 0.1f;
         [SerializeField] private float forceGrowthPercentage = 0.1f;
         [SerializeField] private LayerMask mask;
-        [SerializeField] private SlimeStorage SlimesStack;
+        [SerializeField] private SlimeStorage slimesStack;
 
 
         private GameObject sphere;
-        private SlimeData slimeData;
-        private Colors.Types baseColor;
         private bool isShooting;
         private float forcePercentage;
+
+        public SlimeStorage SlimesStack { 
+            get => this.slimesStack; 
+            private set => this.slimesStack = value;
+        }
+        
+        public Colors.Types SlimeColor { 
+            get => this.slimeColor; 
+            set => this.slimeColor = value; 
+        }
 
         public Vector3 Speed { get; private set;}
 
         private void Awake() {
-            this.slimeData = this.GetComponent<SlimeData>();
-            this.baseColor =  this.slimeData.color;
             this.forcePercentage = this.forceStartPercentage;
-            // this.sphere = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere));
         }
 
         private void Update() {
             if (this.isShooting) {
-                print(this.forcePercentage);
                 this.forcePercentage = Mathf.Lerp(this.forcePercentage, 1f, this.forceGrowthPercentage * Time.deltaTime);
             }
             else {
@@ -61,14 +65,11 @@ namespace KatanaMayhem.Character.Scripts
         }
 
         public void ShootPassive() {
-            var color = this.slimeData.color;
-            var valueIndex = this.SlimesStack.Keys.IndexOf(color);
+            var valueIndex = this.SlimesStack.Keys.IndexOf(this.SlimeColor);
             GameObject refShoot = this.SlimesStack.Values[valueIndex];
 
             var rb = Instantiate(refShoot, this.shootAnchor.position, this.shootAnchor.rotation).GetComponent<Rigidbody>();
             rb.AddForce(this.Speed, ForceMode.VelocityChange);
-
-            this.slimeData.color = this.baseColor;
         }
 
         public void ReceiveInput(bool isShooting) {

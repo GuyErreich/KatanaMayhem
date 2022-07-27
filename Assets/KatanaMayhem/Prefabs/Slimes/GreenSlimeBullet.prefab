@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6149424769883086642}
   - component: {fileID: -2444125574892492928}
   - component: {fileID: 6149424769883086641}
-  - component: {fileID: 8172818131085048855}
   - component: {fileID: 1497707381}
   m_Layer: 6
   m_Name: GreenSlimeBullet
@@ -116,19 +115,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.26
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8172818131085048855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6149424769883086640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c86d268960cbf54a8856f54b39a027e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: 1
 --- !u!114 &1497707381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,5 +127,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fc2a115c687ac4b917981685af7fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staticSlime: {fileID: 78427176851202814, guid: eeced8b7dd5a1564f9bd1e4ed00b63dd, type: 3}
-  offset: -0.7
+  staticSlime: {fileID: 5405587185264664020, guid: 9e9434800fa250a438c97c824a4be410, type: 3}
+  offset: -0.3

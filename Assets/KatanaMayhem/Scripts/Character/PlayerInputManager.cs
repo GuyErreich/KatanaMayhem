@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine; 
+using UnityEngine.Events; 
+using KatanaMayhem.Scripts;
+using KatanaMayhem.Scripts.DataObjects;
 
 namespace KatanaMayhem.Character.Scripts
 {    
@@ -8,8 +11,12 @@ namespace KatanaMayhem.Character.Scripts
     [RequireComponent(typeof(JellyShoot))]
     public class PlayerInputManager : MonoBehaviour
     {
+        [SerializeField] AbilityStorage abilityStorage;
+        public UnityEvent<Colors.Types> SlimeChangeEvent;
+
         private PlayerControls controls;
         private PlayerControls.CharacterActions characterInput;
+        private PlayerControls.SlimeRepoActions slimeRepoInput;
         private PlayerController playerController;
         private JellyShoot jellyShoot;
         private AimTrajectory aimTrajectory;
@@ -24,12 +31,24 @@ namespace KatanaMayhem.Character.Scripts
             //to hide the curser
             Cursor.visible = false;
 
+            this.controls = new PlayerControls();
             this.playerController = this.GetComponent<PlayerController>();
             this.jellyShoot = this.GetComponent<JellyShoot>();
             this.aimTrajectory = this.GetComponent<AimTrajectory>();
 
-            this.controls = new PlayerControls();
-            characterInput = this.controls.Character;
+            this.CharacterInput();
+            this.SlimeRepoInput();
+        }
+
+        private void Update() 
+        {
+            this.playerController.ReceiveInput(this.movement, this.isRunnig, this.isJumping, this.isShooting);
+            this.jellyShoot.ReceiveInput(this.isShooting);
+            this.aimTrajectory.ReceiveInput(this.isAming);
+        }
+
+        private void CharacterInput() {
+            this.characterInput = this.controls.Character;
 
             this.characterInput.Movement.performed += ctx => this.movement = ctx.ReadValue<Vector2>();
             this.characterInput.Run.performed += ctx => this.isRunnig = ctx.ReadValueAsButton();
@@ -39,11 +58,21 @@ namespace KatanaMayhem.Character.Scripts
             this.characterInput.Shoot.performed += ctx => this.isAming = ctx.ReadValueAsButton();
         }
 
-        private void Update() 
-        {
-            this.playerController.ReceiveInput(this.movement, this.isRunnig, this.isJumping, this.isShooting);
-            this.jellyShoot.ReceiveInput(this.isShooting);
-            this.aimTrajectory.ReceiveInput(this.isAming);
+        private void SlimeRepoInput() {
+            this.slimeRepoInput = this.controls.SlimeRepo;
+
+            this.slimeRepoInput.Purple.started += _ => {
+                this.jellyShoot.SlimeColor = Colors.Types.Purple;
+                
+                SlimeChangeEvent?.Invoke(Colors.Types.Purple);
+            };
+            this.slimeRepoInput.Green.started += _ => {
+                var index = this.abilityStorage.Keys.IndexOf(Colors.Types.Green);
+                if (this.abilityStorage.Values[index])
+                    this.jellyShoot.SlimeColor = Colors.Types.Green;
+                
+                SlimeChangeEvent?.Invoke(Colors.Types.Green);
+            };
         }
 
         private void OnEnable() {

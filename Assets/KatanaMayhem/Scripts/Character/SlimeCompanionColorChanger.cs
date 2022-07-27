@@ -2,22 +2,21 @@ using UnityEngine;
 using KatanaMayhem.Scripts;
 using KatanaMayhem.Scripts.DataObjects;
 
+
 namespace KatanaMayhem.Character.Scripts {
-    [RequireComponent(typeof(SlimeData))]
+    [RequireComponent(typeof(JellyShoot))]
     public class SlimeCompanionColorChanger : MonoBehaviour {
-        [SerializeField] private SlimeStorage SlimesStack;
         [SerializeField] private Transform Anchor;
 
+        private SlimeStorage slimesStack;
         private Colors.Types currentColor;
         private GameObject previousSlime;
-        private SlimeData slimeData;
+        private JellyShoot jellyShoot;
 
         private void Awake() {
-            this.slimeData = this.GetComponent<SlimeData>();
-        }
-
-        private void Start() {
-            this.currentColor = this.slimeData.color;
+            this.jellyShoot = this.GetComponent<JellyShoot>();
+            this.slimesStack = this.jellyShoot.SlimesStack;
+            this.currentColor = this.jellyShoot.SlimeColor;
             this.SpawnSlime();
         }
 
@@ -26,17 +25,15 @@ namespace KatanaMayhem.Character.Scripts {
         }
 
         private void HandleColorChange() {
-            if (this.currentColor != this.slimeData.color) {
-                this.currentColor = this.slimeData.color;
-
+            if (this.currentColor !=  this.jellyShoot.SlimeColor) {
+                this.currentColor = this.jellyShoot.SlimeColor;
                 this.SpawnSlime();
             }
         }
 
         private void SpawnSlime() {
-            print("shit");
-            var valueIndex = this.SlimesStack.Keys.IndexOf(this.currentColor);
-            var slime = this.SlimesStack.Values[valueIndex];
+            var valueIndex = this.slimesStack.Keys.IndexOf(this.currentColor);
+            var slime = this.slimesStack.Values[valueIndex];
 
             if (this.previousSlime != null)
                 Destroy(this.previousSlime);
