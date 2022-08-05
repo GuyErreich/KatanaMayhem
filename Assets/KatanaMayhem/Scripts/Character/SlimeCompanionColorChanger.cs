@@ -1,7 +1,7 @@
 using UnityEngine;
+using UnityEngine.VFX;
 using KatanaMayhem.Scripts;
 using KatanaMayhem.Scripts.DataObjects;
-
 
 namespace KatanaMayhem.Character.Scripts {
     [RequireComponent(typeof(JellyShoot))]
@@ -41,6 +41,7 @@ namespace KatanaMayhem.Character.Scripts {
             this.previousSlime = Instantiate(slime, Anchor);
             Destroy(this.previousSlime.GetComponent<Rigidbody>());
             Destroy(this.previousSlime.GetComponent<SphereCollider>());
+            this.previousSlime.GetComponent<VisualEffect>().enabled = true;
             this.previousSlime.transform.localPosition = Vector3.zero;
         }
 
