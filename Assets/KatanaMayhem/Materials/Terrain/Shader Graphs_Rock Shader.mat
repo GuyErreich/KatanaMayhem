@@ -24,8 +24,8 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 41937b8a232b82b489d0c3f6d670976f, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}

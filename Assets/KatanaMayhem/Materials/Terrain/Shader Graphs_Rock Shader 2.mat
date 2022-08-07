@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Rock Shader 1
+  m_Name: Shader Graphs_Rock Shader 2
   m_Shader: {fileID: -6465566751694194690, guid: 41937b8a232b82b489d0c3f6d670976f, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -65,12 +65,12 @@ Material:
     m_Floats:
     - Vector1_2f8e4b0d09304b5fb863ffbfcecd420d: 0.2
     - Vector1_50681f9cd74b4f4a9cb75ce69ff0a9b9: 252
-    - Vector1_5ccddaf3dfb34a2c89e024b0b4b1cd9d: 0.571
+    - Vector1_5ccddaf3dfb34a2c89e024b0b4b1cd9d: 0.645
     - Vector1_708ea43891a7400f8480d42695959672: 1
-    - Vector1_7625ac5e38194707905afd479f881e2c: 10
+    - Vector1_7625ac5e38194707905afd479f881e2c: 15
     - Vector1_d2645f6de41d4232be7353b6153b6bc1: 0
     - Vector1_e599b14b989b44dd801faf18bc2f3518: 0.08
-    - Vector1_f7b2a15f187f41b5b066c0d4b25a6e88: 10
+    - Vector1_f7b2a15f187f41b5b066c0d4b25a6e88: 15
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors: []

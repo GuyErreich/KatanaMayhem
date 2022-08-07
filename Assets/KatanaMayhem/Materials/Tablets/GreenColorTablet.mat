@@ -49,9 +49,9 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WobbleDistance: 1.75
-    - _WobbleFrequency: 9
-    - _WobbleSpeed: 5
+    - _WobbleDistance: 3
+    - _WobbleFrequency: 15
+    - _WobbleSpeed: 6
     m_Colors:
     - _Color: {r: 0, g: 2, b: 0.11764706, a: 0}
     - _Vector3: {r: 0, g: 0.75, b: 0, a: 0}
