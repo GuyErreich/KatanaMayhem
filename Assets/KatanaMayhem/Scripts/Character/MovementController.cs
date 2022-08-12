@@ -50,7 +50,6 @@ namespace KatanaMayhem.Character.Scripts
             this.velocity.y = this.ySpeed;
 
             this.charController.Move(this.velocity * Time.deltaTime);
-
         }
 
         private void HandleGravity()

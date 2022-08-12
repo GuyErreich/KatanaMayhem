@@ -20,6 +20,7 @@ namespace KatanaMayhem.Character.Scripts
         private PlayerController playerController;
         private JellyShoot jellyShoot;
         private AimTrajectory aimTrajectory;
+        private Projection projection;
 
         private Vector2 movement;
         private bool isJumping, isRunnig, isAming, isShooting;
@@ -35,6 +36,7 @@ namespace KatanaMayhem.Character.Scripts
             this.playerController = this.GetComponent<PlayerController>();
             this.jellyShoot = this.GetComponent<JellyShoot>();
             this.aimTrajectory = this.GetComponent<AimTrajectory>();
+            this.projection = this.GetComponent<Projection>();
 
             this.CharacterInput();
             this.SlimeRepoInput();
@@ -44,7 +46,9 @@ namespace KatanaMayhem.Character.Scripts
         {
             this.playerController.ReceiveInput(this.movement, this.isRunnig, this.isJumping, this.isShooting);
             this.jellyShoot.ReceiveInput(this.isShooting);
-            this.aimTrajectory.ReceiveInput(this.isAming);
+            // this.aimTrajectory.ReceiveInput(this.isAming);
+            this.projection.ReceiveInput(this.isAming);
+
         }
 
         private void CharacterInput() {

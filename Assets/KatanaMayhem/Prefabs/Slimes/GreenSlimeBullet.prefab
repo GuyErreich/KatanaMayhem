@@ -129,8 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fc2a115c687ac4b917981685af7fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staticSlime: {fileID: 5405587185264664020, guid: 9e9434800fa250a438c97c824a4be410, type: 3}
-  offset: 1
+  staticSlime: {fileID: 6686837104897121598, guid: bd161389fa4c041458724be9e8a421ea, type: 3}
+  offset: 0.3
 --- !u!73398921 &-6965769752502189917
 VFXRenderer:
   serializedVersion: 1

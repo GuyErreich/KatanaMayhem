@@ -51,6 +51,7 @@ namespace KatanaMayhem.Character.Scripts
                 Vector3 endpoint;
                 float rayMaxDistance = 500f;
 
+
                 if (Physics.Raycast(ray, out hit, rayMaxDistance, this.mask, QueryTriggerInteraction.Collide)) {
                     endpoint = hit.point;
                 }
@@ -59,6 +60,10 @@ namespace KatanaMayhem.Character.Scripts
                 }
 
                 this.Speed = (endpoint - this.shootAnchor.position).normalized * this.maxForce * this.forcePercentage * Time.fixedDeltaTime;
+                
+                // var valueIndex = this.SlimesStack.Keys.IndexOf(this.SlimeColor);
+                // GameObject refShoot = this.SlimesStack.Values[valueIndex];
+                // this.projection.SimulateTrajectory(refShoot, this.Speed);
                 // this.sphere.layer = LayerMask.NameToLayer("Player");
                 // this.sphere.transform.position = endpoint;
             }
