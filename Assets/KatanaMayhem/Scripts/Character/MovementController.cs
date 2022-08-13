@@ -1,7 +1,6 @@
 using UnityEngine;
 
-namespace KatanaMayhem.Character.Scripts
-{
+namespace KatanaMayhem.Scripts.Character {
     [RequireComponent(typeof(CharacterController))]
     public class MovementController : MonoBehaviour
     {

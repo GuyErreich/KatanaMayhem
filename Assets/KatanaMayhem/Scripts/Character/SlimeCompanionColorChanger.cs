@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.VFX;
-using KatanaMayhem.Scripts;
 using KatanaMayhem.Scripts.DataObjects;
 
-namespace KatanaMayhem.Character.Scripts {
+namespace KatanaMayhem.Scripts.Character {
     [RequireComponent(typeof(JellyShoot))]
     public class SlimeCompanionColorChanger : MonoBehaviour {
         [SerializeField] private Transform Anchor;

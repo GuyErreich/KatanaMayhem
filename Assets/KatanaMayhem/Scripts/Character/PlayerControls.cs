@@ -15,8 +15,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace KatanaMayhem.Character.Scripts
-{
+namespace KatanaMayhem.Scripts.Character {
     public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         public InputActionAsset asset { get; }

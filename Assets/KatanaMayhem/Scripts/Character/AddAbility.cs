@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
-using KatanaMayhem.Scripts;
 
-namespace KatanaMayhem.Character.Scripts {
+namespace KatanaMayhem.Scripts.Character {
     public class AddAbility : MonoBehaviour {
         public UnityEvent addGreenSlime;
 
@@ -14,7 +13,6 @@ namespace KatanaMayhem.Character.Scripts {
 
             if (color == Colors.Types.Green) {
                 addGreenSlime?.Invoke();
-                Destroy(collider.gameObject);
             }
         }
     }

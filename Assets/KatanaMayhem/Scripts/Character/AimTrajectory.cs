@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KatanaMayhem.Character.Scripts
+namespace KatanaMayhem.Scripts.Character
 {
     [RequireComponent(typeof(JellyShoot))]
     [RequireComponent(typeof(LineRenderer))]

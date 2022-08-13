@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace KatanaMayhem.Character.Scripts
+namespace KatanaMayhem.Scripts.Character
 {
     public class IKFootPlacement : MonoBehaviour
     {

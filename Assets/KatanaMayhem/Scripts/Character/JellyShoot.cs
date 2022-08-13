@@ -1,8 +1,7 @@
 using UnityEngine;
-using KatanaMayhem.Scripts;
 using KatanaMayhem.Scripts.DataObjects;
 
-namespace KatanaMayhem.Character.Scripts
+namespace KatanaMayhem.Scripts.Character
 {
     public class JellyShoot : MonoBehaviour
     {

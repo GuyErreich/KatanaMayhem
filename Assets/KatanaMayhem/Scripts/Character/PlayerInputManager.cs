@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine; 
 using UnityEngine.Events; 
-using KatanaMayhem.Scripts;
 using KatanaMayhem.Scripts.DataObjects;
 
-namespace KatanaMayhem.Character.Scripts
+namespace KatanaMayhem.Scripts.Character
 {    
     [RequireComponent(typeof(PlayerController))]
     [RequireComponent(typeof(JellyShoot))]
